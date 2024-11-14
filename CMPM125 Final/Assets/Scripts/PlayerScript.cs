@@ -4,12 +4,30 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public int speed;   
+    public int moveSpeed = 10;
+    public int turnSpeed = 8;
+
+    private Rigidbody rb;
     
-    void Update()
+    void Start()
     {
-        // Change GetAxisRaw to GetAxis if the movement is too snappy or something
-		Vector3 moveVec = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-		transform.position += moveVec * speed * Time.deltaTime;
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
+    {
+        // Movement Controls
+        float moveInput = Input.GetAxis("Vertical");
+        float turnInput = Input.GetAxis("Horizontal");
+
+            // Forward/Backward
+        Vector3 moveDirection = transform.forward * moveInput * moveSpeed * Time.fixedDeltaTime;
+    
+        rb.MovePosition(rb.position + moveDirection);
+
+            // Rotation
+        Quaternion turnRotation = Quaternion.Euler(0f, turnInput * turnSpeed * Time.fixedDeltaTime, 0f);
+
+        rb.MoveRotation(rb.rotation * turnRotation);
     }
 }
