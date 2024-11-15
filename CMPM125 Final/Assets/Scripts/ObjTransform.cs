@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WallRaise : MonoBehaviour
+public class ObjTransform : MonoBehaviour
 {
     // Alternate code to move this object to a new x,y,z location specified in the inspector
     // public Vector3 newPosition;
