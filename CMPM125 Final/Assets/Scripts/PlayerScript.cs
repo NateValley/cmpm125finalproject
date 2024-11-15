@@ -17,17 +17,22 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
         // Movement Controls
-        float moveInput = Input.GetAxis("Vertical");
-        float turnInput = Input.GetAxis("Horizontal");
+        float FBInput = Input.GetAxis("Vertical");
+        float LRInput = Input.GetAxis("Horizontal");
 
             // Forward/Backward
-        Vector3 moveDirection = transform.forward * moveInput * moveSpeed * Time.fixedDeltaTime;
+        Vector3 moveDirection = transform.forward * FBInput;
     
-        rb.MovePosition(rb.position + moveDirection);
 
-            // Rotation
-        Quaternion turnRotation = Quaternion.Euler(0f, turnInput * turnSpeed * Time.fixedDeltaTime, 0f);
+        Vector3 LRDirection = transform.right * LRInput;
+    
+        Vector3 totalDirection = (moveDirection + LRDirection).normalized * moveSpeed * Time.fixedDeltaTime;
 
-        rb.MoveRotation(rb.rotation * turnRotation);
+        rb.MovePosition(rb.position + totalDirection);
+
+        //     // Rotation
+        // Quaternion turnRotation = Quaternion.Euler(0f, turnInput * turnSpeed * Time.fixedDeltaTime, 0f);
+
+        // rb.MoveRotation(rb.rotation * turnRotation);
     }
 }
