@@ -79,11 +79,13 @@ public class EventScript : MonoBehaviour
 
 	// (JUICE TODO:) Play button animation and sfx
 	private void buttonAnimateDown(){
-		transform.position += new Vector3(0, -0.25f, 0);
+		Debug.Log("Button Pressed Down");
+		// transform.position += new Vector3(0, -0.25f, 0);
 	}
 
 	private void buttonAnimateUp(){
-		transform.position += new Vector3(0, -0.25f, 0);
+		Debug.Log("Button Released");
+		// transform.position += new Vector3(0, +0.25f, 0);
 	}
 }
 
