@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Egg
+  - launch
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - HeldEgg
   - 
   - 
   - 
