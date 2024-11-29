@@ -19,6 +19,9 @@ public class HoleEnterScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        egg_RigidBody = egg.GetComponent<Rigidbody>();
+        if (egg_RigidBody)
+        {
+            egg_RigidBody = egg.GetComponent<Rigidbody>();
+        }
     }
 }
