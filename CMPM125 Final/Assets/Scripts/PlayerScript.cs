@@ -9,8 +9,9 @@ public class PlayerScript : MonoBehaviour
 
     private Rigidbody rb;
     private bool holdingEgg = false;
-    private GameObject heldEggObj;
     private Rigidbody heldEggRb;
+
+    public Transform holdPoint;
     
     void Start()
     {
@@ -18,6 +19,28 @@ public class PlayerScript : MonoBehaviour
     }
 
     void FixedUpdate()
+    {
+        HandleMovement();
+
+        // Move Egg along with this object 
+        HandleEggHolding();
+        // (when implementing raycast movement, do all the raycast stuff to the egg as well)
+        
+        // Vector3 holdPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.5f);
+
+        // if (holdingEgg) {
+        //     heldEggRb.MovePosition(holdPosition);
+        // }
+
+        //     // Rotation
+        // Quaternion turnRotation = Quaternion.Euler(0f, turnInput * turnSpeed * Time.fixedDeltaTime, 0f);
+
+        // rb.MoveRotation(rb.rotation * turnRotation);
+
+        // if (Input.GetKeyDown("space")) { releaseEgg(); }
+    }
+
+    private void HandleMovement()
     {
         // Movement Controls
         float FBInput = Input.GetAxis("Vertical");
@@ -32,16 +55,21 @@ public class PlayerScript : MonoBehaviour
         Vector3 totalDirection = (moveDirection + LRDirection).normalized * moveSpeed * Time.fixedDeltaTime;
 
         rb.MovePosition(rb.position + totalDirection);
-        // Move Egg along with this object 
-        // (when implementing raycast movement, do all the raycast stuff to the egg as well)
-        if (holdingEgg){heldEggRb.MovePosition(heldEggRb.position + totalDirection);}
+    }
 
-        //     // Rotation
-        // Quaternion turnRotation = Quaternion.Euler(0f, turnInput * turnSpeed * Time.fixedDeltaTime, 0f);
+    private void HandleEggHolding()
+    {
+        if (holdingEgg && heldEggRb != null)
+        {
+            Vector3 moveDelta = (holdPoint.position - heldEggRb.position);
 
-        // rb.MoveRotation(rb.rotation * turnRotation);
+            heldEggRb.velocity = moveDelta / Time.fixedDeltaTime;
+        }
 
-        if (Input.GetKeyDown("space")) { releaseEgg(); }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ReleaseEgg();
+        }
     }
 
     // **improvment: consider adding a child collider to the player that is called the
@@ -56,26 +84,67 @@ public class PlayerScript : MonoBehaviour
 		if (other.gameObject.CompareTag("Egg") && Input.GetKeyDown("space"))
 		{
             // other.transform.Find("GrabRadius");
-            if (holdingEgg){
-                releaseEgg();
-            } else {
+            if (holdingEgg)
+            {
+
+                ReleaseEgg();
+
+            } 
+            else 
+            {
                 // Start Holding Egg
-                holdingEgg = true;
+                // holdingEgg = true;
                 // heldEggObj = other.gameObject;
-                heldEggRb = other.rigidbody;
-                other.transform.parent = transform;
-                other.rigidbody.useGravity = false;
-                other.rigidbody.isKinematic = true;
+                // heldEggRb = other.rigidbody;
+
+                // other.rigidbody.useGravity = false;
+                // other.rigidbody.isKinematic = true;
+
+                // Debug.Log("holding egg");
+
+                GrabEgg(other.rigidbody);
             }
 		}
 	}
 
-    void releaseEgg(){
-        if (holdingEgg){
-            holdingEgg = false;
-            heldEggRb.transform.parent = null;
+    private void GrabEgg(Rigidbody eggRb)
+    {
+        if (eggRb == null) { return; }
+
+        if (holdingEgg)
+        {
+            Debug.Log("Already Holding Egg");
+            ReleaseEgg();
+        }
+
+        holdingEgg = true;
+        heldEggRb = eggRb;
+
+        heldEggRb.useGravity = false;
+        heldEggRb.isKinematic = false;
+
+        heldEggRb.gameObject.layer = LayerMask.NameToLayer("HeldEgg");
+
+        Debug.Log("Egg Grabbed");
+    }
+
+    private void ReleaseEgg()
+    {
+        if (!holdingEgg || heldEggRb == null) return;
+        
+        if (heldEggRb != null)
+        {
             heldEggRb.useGravity = true;
             heldEggRb.isKinematic = false;
+            heldEggRb.gameObject.layer = LayerMask.NameToLayer("Default");
+
+            heldEggRb.velocity = Vector3.zero;
+            heldEggRb.angularVelocity = Vector3.zero;
         }
+        
+        holdingEgg = false;
+        heldEggRb = null;
+
+        Debug.Log("Egg Released");
     }
 }
