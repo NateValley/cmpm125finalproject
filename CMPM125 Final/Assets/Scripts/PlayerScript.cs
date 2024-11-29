@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -9,35 +10,45 @@ public class PlayerScript : MonoBehaviour
 
     private Rigidbody rb;
     private bool holdingEgg = false;
+    private bool eggInRange = false;
+    private GameObject eggObj;
     private Rigidbody heldEggRb;
 
     public Transform holdPoint;
+    public GameObject respawn;
+    public float minY = -10;
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
+    void Update(){
+        if (eggInRange && Input.GetKeyDown(KeyCode.Space)){
+            if (holdingEgg)
+            {
+                ReleaseEgg();
+            } 
+            else
+            {
+                GrabEgg(eggObj.GetComponent<Rigidbody>());
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GrabEgg(eggObj.GetComponent<Rigidbody>());
+        }
+
+        if (transform.position.y < minY){
+            transform.position = respawn.transform.position;
+        }
+    }
+
     void FixedUpdate()
     {
         HandleMovement();
-
         // Move Egg along with this object 
         HandleEggHolding();
-        // (when implementing raycast movement, do all the raycast stuff to the egg as well)
-        
-        // Vector3 holdPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.5f);
-
-        // if (holdingEgg) {
-        //     heldEggRb.MovePosition(holdPosition);
-        // }
-
-        //     // Rotation
-        // Quaternion turnRotation = Quaternion.Euler(0f, turnInput * turnSpeed * Time.fixedDeltaTime, 0f);
-
-        // rb.MoveRotation(rb.rotation * turnRotation);
-
-        // if (Input.GetKeyDown("space")) { releaseEgg(); }
     }
 
     private void HandleMovement()
@@ -65,57 +76,39 @@ public class PlayerScript : MonoBehaviour
 
             heldEggRb.velocity = moveDelta / Time.fixedDeltaTime;
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ReleaseEgg();
-        }
     }
 
-    // **improvment: consider adding a child collider to the player that is called the
-    // "grabbing range" or smth which has a larger collider (and is a trigger collider)
-    // that runs the following code on the colling/triggering egg object**
-    // If the player pressed space while touching the egg,
-    // the egg will attach and move with the player
-    // and turn kinematic and allow its movement to be driven by the player movement
-    void OnCollisionStay(Collision other)
+    void OnTriggerEnter(Collider other)
 	{
-		// Check if the colliding object is the egg
-		if (other.gameObject.CompareTag("Egg") && Input.GetKeyDown("space"))
+		// Check if the entering object is the egg
+		if (other.gameObject.CompareTag("Egg"))
 		{
-            // other.transform.Find("GrabRadius");
-            if (holdingEgg)
-            {
-
-                ReleaseEgg();
-
-            } 
-            else 
-            {
-                // Start Holding Egg
-                // holdingEgg = true;
-                // heldEggObj = other.gameObject;
-                // heldEggRb = other.rigidbody;
-
-                // other.rigidbody.useGravity = false;
-                // other.rigidbody.isKinematic = true;
-
-                // Debug.Log("holding egg");
-
-                GrabEgg(other.rigidbody);
-            }
+            eggInRange = true;
+            eggObj = other.gameObject;
+            // Debug.Log("egg entered range");
 		}
 	}
+
+    void OnTriggerExit(Collider other)
+	{
+        // Check if the exiting object is the egg
+		if (other.gameObject.CompareTag("Egg"))
+		{
+            // If holding the egg, ignore this event
+            if (holdingEgg && eggObj == other.gameObject)
+            {
+                return;
+            }
+
+            // Debug.Log("egg exited range");
+            eggInRange = false;
+            eggObj = null;
+        }
+    }
 
     private void GrabEgg(Rigidbody eggRb)
     {
         if (eggRb == null) { return; }
-
-        if (holdingEgg)
-        {
-            Debug.Log("Already Holding Egg");
-            ReleaseEgg();
-        }
 
         holdingEgg = true;
         heldEggRb = eggRb;
@@ -125,7 +118,7 @@ public class PlayerScript : MonoBehaviour
 
         heldEggRb.gameObject.layer = LayerMask.NameToLayer("HeldEgg");
 
-        Debug.Log("Egg Grabbed");
+        // Debug.Log("Egg Grabbed");
     }
 
     private void ReleaseEgg()
@@ -145,6 +138,6 @@ public class PlayerScript : MonoBehaviour
         holdingEgg = false;
         heldEggRb = null;
 
-        Debug.Log("Egg Released");
+        // Debug.Log("Egg Released");
     }
 }
