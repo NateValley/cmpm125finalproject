@@ -6,6 +6,11 @@ public class EggScript : MonoBehaviour
 {
     public float minY = -10;
     public GameObject respawn;
+    private Animator anim;
+
+    void Start(){
+        anim = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -13,5 +18,9 @@ public class EggScript : MonoBehaviour
         if (transform.position.y < minY){
             transform.position = respawn.transform.position;
         }
+    }
+
+    public void PlayEndLevel1(){
+        anim.Play("Lv1EggOutroAnimation");
     }
 }

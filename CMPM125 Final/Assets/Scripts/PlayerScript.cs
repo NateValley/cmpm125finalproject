@@ -34,10 +34,6 @@ public class PlayerScript : MonoBehaviour
                 GrabEgg(eggObj.GetComponent<Rigidbody>());
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GrabEgg(eggObj.GetComponent<Rigidbody>());
-        }
 
         if (transform.position.y < minY){
             transform.position = respawn.transform.position;
