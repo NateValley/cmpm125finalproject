@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 3ed1b1d2d86e02341923da0123053b13
+labels:
+- Fur
+- Hair
+- Pattern
+- Animal
+- Skin
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 12961
+  packageName: Fur Textures Pack
+  packageVersion: 1.00
+  assetPath: Assets/Fur textures pack/Fur 08/Fur pattern 08.mat
+  uploadId: 29419
