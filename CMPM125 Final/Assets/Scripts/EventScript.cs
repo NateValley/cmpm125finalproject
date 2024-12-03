@@ -11,6 +11,7 @@ public class EventScript : MonoBehaviour
 	public UnityEvent toRun;
 	public UnityEvent toRunAfter;
  	private bool isPressed;
+	private AudioSource audioSource;
 	
 	// --------------------------------------------------------------------------------------------------
 	// ---- Collision ----
@@ -80,6 +81,8 @@ public class EventScript : MonoBehaviour
 	// (JUICE TODO:) Play button animation and sfx
 	private void buttonAnimateDown(){
 		Debug.Log("Button Pressed Down");
+		audioSource = GetComponent<AudioSource>();
+		audioSource.Play();
 		// transform.position += new Vector3(0, -0.25f, 0);
 	}
 
