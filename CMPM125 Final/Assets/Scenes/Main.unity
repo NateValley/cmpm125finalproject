@@ -596,8 +596,6 @@ Transform:
   - {fileID: 1050379192}
   - {fileID: 1626674278}
   - {fileID: 1225462811}
-  - {fileID: 1868158262}
-  - {fileID: 314125384}
   - {fileID: 453107035}
   m_Father: {fileID: 1313002469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1340,12 +1338,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314125383}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.03, y: 44.3, z: 140.27}
-  m_LocalScale: {x: 3.1399999, y: 3.1399999, z: 6}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -59.08736, y: 80.92848, z: 136.49532}
+  m_LocalScale: {x: 3.140001, y: 3.1399999, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 164900785}
+  m_Father: {fileID: 1883524913}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &314125385
 MonoBehaviour:
@@ -1683,7 +1681,6 @@ Transform:
   - {fileID: 745065658}
   - {fileID: 1782079068}
   - {fileID: 1633293441}
-  - {fileID: 1605375584}
   m_Father: {fileID: 1313002469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &453107034
@@ -5323,6 +5320,50 @@ Transform:
   - {fileID: 164900785}
   - {fileID: 736086075}
   m_Father: {fileID: 1845879384}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1418809520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1418809522}
+  - component: {fileID: 1418809521}
+  m_Layer: 0
+  m_Name: MenuHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1418809521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418809520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e32f141f8652e144ac422ca7b27adac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1418809522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418809520}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 59.05736, y: -38.784145, z: 8.707037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1453324638
 PrefabInstance:
@@ -10736,7 +10777,7 @@ GameObject:
   - component: {fileID: 1605375581}
   - component: {fileID: 1605375580}
   m_Layer: 0
-  m_Name: TriggerVolume (1)
+  m_Name: IntroCutsceneTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10803,6 +10844,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1418809521}
+        m_TargetAssemblyTypeName: MenuHelperScript, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10893,11 +10946,11 @@ Transform:
   m_GameObject: {fileID: 1605375579}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 1.9200001, z: -7.5699997}
+  m_LocalPosition: {x: -59.08736, y: 40.704147, z: -16.277037}
   m_LocalScale: {x: 3.1399999, y: 3.1399999, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 445416851}
+  m_Father: {fileID: 1883524913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1624069168
 GameObject:
@@ -12078,6 +12131,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1418809521}
+        m_TargetAssemblyTypeName: MenuHelperScript, Assembly-CSharp
+        m_MethodName: StopTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1418809521}
+        m_TargetAssemblyTypeName: MenuHelperScript, Assembly-CSharp
+        m_MethodName: endLv1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   toRunAfter:
     m_PersistentCalls:
       m_Calls: []
@@ -12162,14 +12239,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868158257}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.03, y: 44.3, z: 124.82}
-  m_LocalScale: {x: 3.1399999, y: 3.1399999, z: 6}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -59.08736, y: 80.92848, z: 121.04531}
+  m_LocalScale: {x: 3.140001, y: 3.1399999, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1576007401}
   - {fileID: 722551999}
-  m_Father: {fileID: 164900785}
+  m_Father: {fileID: 1883524913}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1878737920
 GameObject:
@@ -12278,6 +12355,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878737920}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1883524912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1883524913}
+  m_Layer: 0
+  m_Name: Cutscene Triggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1883524913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883524912}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 59.05736, y: -38.784145, z: 8.707037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1605375584}
+  - {fileID: 1868158262}
+  - {fileID: 314125384}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1890204695
 GameObject:
   m_ObjectHideFlags: 0
@@ -12934,4 +13045,6 @@ SceneRoots:
   - {fileID: 421801398}
   - {fileID: 296528181}
   - {fileID: 204761695}
+  - {fileID: 1883524913}
   - {fileID: 1764261499}
+  - {fileID: 1418809522}

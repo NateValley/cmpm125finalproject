@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Threading;
 
 public class UIManagerScript : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class UIManagerScript : MonoBehaviour
     [SerializeField] Canvas CreditsMenu;
 
     [SerializeField] Slider BallSlider;
+
+    public Stopwatch timerObj;
     
     enum MenuState {
         HUD,
@@ -36,12 +39,12 @@ public class UIManagerScript : MonoBehaviour
     {
         ChangeToMain();
     }
-    void Update(){
-        if(TransformEGG.eggsZ > 147 && CurrentMenu == MenuState.HUD){
-            CurrentMenu = MenuState.Win;
-            MenuCheck();
-        }
-    }
+    // void Update(){
+    //     if(TransformEGG.eggsZ > 147 && CurrentMenu == MenuState.HUD){
+    //         CurrentMenu = MenuState.Win;
+    //         MenuCheck();
+    //     }
+    // }
     
     void MenuCheck()
     {
@@ -116,15 +119,32 @@ public class UIManagerScript : MonoBehaviour
         MenuCheck();
     }
     
-    public bool checkHunterWin(){//Check if the hunter win menu enabled, to be used with counter script
-        return WinMenu.enabled;
-    }
-    public void playmenu(){
+    // public bool checkHunterWin(){//Check if the hunter win menu enabled, to be used with counter script
+    //     return WinMenu.enabled;
+    // }
+    public void sceneLv1(){
         SceneManager.LoadScene("Main");
+    }
+
+    public void sceneLv2(){
+        SceneManager.LoadScene("Level2");
+    }
+
+    public void sceneMainMenu(){
+        SceneManager.LoadScene("Main Menu");
     }
 
     // public void StartGame()
     // {
     //     SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     // }
+
+    // ---- Stopwatch ----
+    public void timerOn(){
+        timerObj.SetActive();
+    }
+
+    public void timerOff(){
+        timerObj.SetInactive();
+    }
 }

@@ -28,7 +28,7 @@ public class Stopwatch : MonoBehaviour
     }
     
     public void SetActive(){
-		StartCoroutine(IncrementTime(.01f));
         active = true;
+		StartCoroutine(IncrementTime(.01f));
     }
 }
