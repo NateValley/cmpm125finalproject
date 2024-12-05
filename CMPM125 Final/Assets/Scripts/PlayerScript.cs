@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     public int turnSpeed = 8;
 
     private Rigidbody rb;
-    private bool holdingEgg = false;
+    public bool holdingEgg = false;
     private bool eggInRange = false;
     private GameObject eggObj;
     private Rigidbody heldEggRb;
@@ -110,7 +110,7 @@ public class PlayerScript : MonoBehaviour
         heldEggRb = eggRb;
 
         heldEggRb.useGravity = false;
-        heldEggRb.isKinematic = false;
+        //heldEggRb.isKinematic = false;
 
         heldEggRb.gameObject.layer = LayerMask.NameToLayer("HeldEgg");
 
@@ -124,7 +124,7 @@ public class PlayerScript : MonoBehaviour
         if (heldEggRb != null)
         {
             heldEggRb.useGravity = true;
-            heldEggRb.isKinematic = false;
+            //heldEggRb.isKinematic = false;
             heldEggRb.gameObject.layer = LayerMask.NameToLayer("Default");
 
             heldEggRb.velocity = Vector3.zero;
