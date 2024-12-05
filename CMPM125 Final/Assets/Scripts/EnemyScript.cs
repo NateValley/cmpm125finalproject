@@ -18,6 +18,7 @@ public class EnemyScript : MonoBehaviour
 
     [SerializeField] private float speed = 6f;
     public float chaseRange = 0f;
+    public GameObject player;
 
     enum EnemyState {
         Waiting,
@@ -80,11 +81,11 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Egg") && canHold)
         {
+            PlayerScript playerScript = player.GetComponent<PlayerScript>();
+            Rigidbody egg_RigidBody = collision.gameObject.GetComponent<Rigidbody>();
+            // if egg usegravity == false, call player release egg
+            if(!egg_RigidBody.useGravity) { playerScript.ReleaseEgg(); }
             currentState = EnemyState.Bringing;
-        }
-        else if (collision.gameObject.CompareTag("Hole"))
-        {
-            holdingEgg = false;
         }
     }
 
