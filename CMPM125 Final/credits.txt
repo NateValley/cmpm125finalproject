@@ -5,3 +5,6 @@ Slide Whistle, Descending, A.wav by InspectorJ -- https://freesound.org/s/402581
 Slide Whistle up 02.wav by FreqMan -- https://freesound.org/s/88429/ -- License: Attribution 4.0
 Forest Ambiance by Nagwense -- https://freesound.org/s/407660/ -- License: Attribution NonCommercial 4.0
 Get Up, Pierrot ATM notification.wav by f.anthony_shepherd -- https://freesound.org/s/564327/ -- License: Creative Commons 0
+Simplistic Low Poly Nature Unity Asset Package by Acorn Bringer
+Wood Texture: https://assetstore.unity.com/packages/2d/textures-materials/wood/hand-painted-seamless-wood-texture-vol-6-162145 -- License: Standard Unity Asset Store EULA
+Leaves Texture: https://commons.wikimedia.org/wiki/File:Dark_green_seamless_vegetation_leaves_foliage_dense_bush_shrub_texture.jpg -- License: Sisters.seamless, CC0, via Wikimedia Commons
