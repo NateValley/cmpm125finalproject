@@ -6,30 +6,27 @@ public class HoleEnterScript : MonoBehaviour
 {
     public GameObject introPlane;
     public GameObject exitPlane;
-    public GameObject egg;
-    private Rigidbody egg_RigidBody;
 
     private AudioSource whistleDownAudio;
     private AudioSource whistleUpAudio;
 
     void OnCollisionEnter(Collision egg){
         Debug.Log("triggered");
-        if(egg.gameObject.CompareTag("Egg")){
-            whistleDownAudio.Play();
-            egg.transform.position = exitPlane.transform.position;
-            egg_RigidBody.AddForce(0, 0, 50, ForceMode.Impulse);
-            whistleUpAudio.Play();
+        if(egg.gameObject.tag == "Egg"){
+            Rigidbody egg_RigidBody = egg.gameObject.GetComponent<Rigidbody>();
+            if(egg_RigidBody.useGravity)
+            {
+                egg.transform.position = exitPlane.transform.position;
+                egg_RigidBody.AddForce(0, 0, 50, ForceMode.Impulse);
+                whistleDownAudio.Play();
+            }
+            //whistleUpAudio.Play();
         }
     }
     // Start is called before the first frame update
     void Start()
     {
-        //if (egg_RigidBody)
-        //{
-        egg_RigidBody = egg.GetComponent<Rigidbody>();
-        //}
-
         whistleDownAudio = GetComponent<AudioSource>();
-        whistleUpAudio = GetComponent<AudioSource>();
+        //whistleUpAudio = GetComponent<AudioSource>();
     }
 }

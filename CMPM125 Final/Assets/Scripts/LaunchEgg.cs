@@ -19,9 +19,9 @@ public class Launch : MonoBehaviour
 			{
 				eggRB.velocity = Vector3.zero;
 				eggRB.transform.position = newPosition;
+				audioSource.Play();
 			}
 			Vector3 launchForce = (Vector3.up * 2.0f + transform.forward) * force;
-			audioSource.Play();
 			eggRB.AddForce(launchForce, ForceMode.Impulse);
 		}
 	}
