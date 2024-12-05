@@ -15,7 +15,7 @@ public class Launch : MonoBehaviour
 
 			Vector3 newPosition = new Vector3(transform.position.x, eggRB.transform.position.y + 5, eggRB.transform.position.z + 5);
 
-			if (eggRB.transform.position != newPosition)
+			if (eggRB.transform.position != newPosition && eggRB.useGravity)
 			{
 				eggRB.velocity = Vector3.zero;
 				eggRB.transform.position = newPosition;
