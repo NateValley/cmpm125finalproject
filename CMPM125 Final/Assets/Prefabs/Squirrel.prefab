@@ -54,6 +54,8 @@ MonoBehaviour:
   moveSpeed: 20
   turnSpeed: 60
   holdPoint: {fileID: 181585925093183486}
+  respawn: {fileID: 0}
+  minY: -10
 --- !u!54 &6901196072410001905
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62,7 +64,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568894093447234162}
   serializedVersion: 4
-  m_Mass: 100
+  m_Mass: 150
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

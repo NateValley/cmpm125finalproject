@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Egg
   - launch
+  - Enemy Waypoint
   layers:
   - Default
   - TransparentFX
