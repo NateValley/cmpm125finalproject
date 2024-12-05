@@ -13,7 +13,7 @@ public class Launch : MonoBehaviour
 			Rigidbody eggRB = other.gameObject.GetComponent<Rigidbody>();
 			audioSource = GetComponent<AudioSource>();
 
-			Vector3 newPosition = new Vector3(transform.position.x, eggRB.transform.position.y + 5, eggRB.transform.position.z + 5);
+			Vector3 newPosition = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
 
 			if (eggRB.transform.position != newPosition && eggRB.useGravity)
 			{

@@ -17,6 +17,8 @@ public class PlayerScript : MonoBehaviour
     public Transform holdPoint;
     public GameObject respawn;
     public float minY = -10;
+
+    private int rotateInput = 0;
     
     void Start()
     {
@@ -62,6 +64,24 @@ public class PlayerScript : MonoBehaviour
         Vector3 totalDirection = (moveDirection + LRDirection).normalized * moveSpeed * Time.fixedDeltaTime;
 
         rb.MovePosition(rb.position + totalDirection);
+
+        if (LRInput < 0)
+        {
+            transform.GetChild(0).rotation = new Quaternion(0, -1, 0, 3);
+        }
+        else if (LRInput > 0)
+        {
+            transform.GetChild(0).rotation = new Quaternion(0, 1, 0, 3);
+        }
+        else
+        {
+            transform.GetChild(0).rotation = new Quaternion(0, 0, 0, 0);
+        }
+
+        if (FBInput < 0)
+        {
+            transform.GetChild(0).rotation = new Quaternion(0, 180, 0, 0);
+        }
     }
 
     private void HandleEggHolding()
@@ -117,7 +137,7 @@ public class PlayerScript : MonoBehaviour
         // Debug.Log("Egg Grabbed");
     }
 
-    private void ReleaseEgg()
+    public void ReleaseEgg()
     {
         if (!holdingEgg || heldEggRb == null) return;
         
