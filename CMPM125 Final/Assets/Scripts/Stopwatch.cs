@@ -11,18 +11,6 @@ public class Stopwatch : MonoBehaviour
     private TMP_Text title;
     public float currTime = 0;
     private bool active = true;
-    
-    // Place this function on root parent gameobject
-    // private void Awake() {
-    //     DontDestroyOnLoad(this);
-    // }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-		// StartCoroutine(IncrementTime(.01f));
-        // SetInactive(); // Stay turned off until needed
-    }
 
     private IEnumerator IncrementTime(float time)
 	{
