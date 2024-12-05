@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fac5acd5ad489214781636c608a0c628
+timeCreated: 1497729573
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 93894
+  packageName: Simplistic Low Poly Nature
+  packageVersion: 1.0
+  assetPath: Assets/Acorn Bringer Assets/Simplistic Low Poly Nature/Prefabs/SNature_Tree.prefab
+  uploadId: 246498
